@@ -1,0 +1,6 @@
+system:
+    appKey: "xxxxx"
+    appKeySecret: "xxxxxx"
+    tempAuthCode: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    locale: ru
+dynamic:

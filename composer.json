@@ -1,0 +1,33 @@
+{
+  "name": "gillbeits/aliexpress.open",
+  "description": "Aliexpress Open API",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Ivan Koretskiy",
+      "email": "gillbeits@gmail.com"
+    }
+  ],
+  "autoload": {
+    "psr-0": {
+      "Aliexpress": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Aliexpress\\Open\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "symfony/validator": "^2.7",
+    "doctrine/annotations": "^1.2",
+    "guzzlehttp/guzzle": "^6.0",
+    "doctrine/cache": "^1.4",
+    "symfony/yaml": "^2.7",
+    "doctrine/collections": "^1.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^4.8"
+  }
+}
