@@ -13,6 +13,7 @@ use Aliexpress\Open\Ornamental\ExtendProperties;
 use Aliexpress\Open\Request;
 use Aliexpress\Open\Sign;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class Method
@@ -86,14 +87,22 @@ class Method
         $client = $this->getClient();
         switch ($this->method) {
             case Api::METHOD_GET:
-                $response = $client->get($this->sign->getFullPath(), [
-                    'query' => $properties
-                ]);
+                try {
+                    $response = $client->get($this->sign->getFullPath(), [
+                        'query' => $properties
+                    ]);
+                } catch (ClientException $e) {
+                    var_dump($e->getResponse()->getBody()->getContents());
+                }
                 break;
             case Api::METHOD_POST:
-                $response = $client->post($this->sign->getFullPath(), [
-                    'form_params' => $properties
-                ]);
+                try {
+                    $response = $client->post($this->sign->getFullPath(), [
+                        'form_params' => $properties
+                    ]);
+                } catch (ClientException $e) {
+                    var_dump($e->getResponse()->getBody()->getContents());
+                }
                 break;
             default:
                 throw new \RuntimeException("Required methods " . Api::METHOD_GET . " and " . Api::METHOD_POST);

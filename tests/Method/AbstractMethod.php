@@ -21,6 +21,6 @@ abstract class AbstractMethod extends \PHPUnit_Framework_TestCase
      */
     protected function setUp()
     {
-        $this->api = Api::getInstance(__DIR__ . '/../config.yml');
+        $this->api = Api::getInstance();
     }
 }

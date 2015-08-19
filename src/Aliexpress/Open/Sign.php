@@ -16,13 +16,23 @@ class Sign
     /** @var  Request */
     protected $request;
 
+    /**
+     * @param $sign_str
+     * @param $appKeySecret
+     * @return string
+     */
+    public static function getSignString($sign_str, $appKeySecret)
+    {
+        return strtoupper(bin2hex(hash_hmac("sha1", $sign_str, $appKeySecret, true)));
+    }
+
     public function __construct(Request $request)
     {
         $this->request = $request;
         $params = $this->request->getMethodParams();
         ksort($params);
         array_walk($params, function (&$value, $key) { $value = $key . $value; });
-        $this->sign = strtoupper(bin2hex(hash_hmac("sha1", $request->getMethodPath() . '/' . Api::getInstance()->getAppKey() . implode($params), Api::getInstance()->getAppKeySecret(), true)));
+        $this->sign = self::getSignString($request->getMethodPath() . '/' . Api::getInstance()->getAppKey() . implode($params), Api::getInstance()->getAppKeySecret());
     }
 
     /**

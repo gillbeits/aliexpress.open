@@ -33,17 +33,22 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+      "Aliexpress\\Open\\Init\\Init::buildParameters"
     ],
     "post-update-cmd": [
-      "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
+      "Aliexpress\\Open\\Init\\Init::buildParameters"
     ]
   },
   "extra": {
     "incenteev-parameters": {
-      "file": "tests/config.yml",
+      "file": "conf/config.yml",
       "dist-file": "conf/config.yml.dist",
       "parameter-key": "system"
+    },
+    "aliexpress-open": {
+      "file": "conf/auth.yml",
+      "dist-file": "conf/auth.yml.dist",
+      "parameter-key": "init"
     }
   }
 }

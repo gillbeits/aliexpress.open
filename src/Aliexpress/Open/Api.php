@@ -17,6 +17,7 @@ use Aliexpress\Open\Method\PostAeProduct;
 use Aliexpress\Open\Method\RecommendCategoryByKeyword;
 use Aliexpress\Open\Method\UploadImage;
 use Aliexpress\Open\Method\UploadTempImage;
+use Composer\Composer;
 use Doctrine\Common\Annotations\AnnotationReader;
 use Doctrine\Common\Annotations\Reader;
 use Symfony\Component\Validator\Exception\ValidatorException;
@@ -72,9 +73,9 @@ class Api
     protected $config;
     /** @var  string */
     protected $configFile;
-
     /** @var  string */
-    protected $temporary_auth_code;
+    protected $authConfigFile;
+
     /** @var  string */
     protected $refresh_token;
     /** @var  string */
@@ -85,35 +86,33 @@ class Api
     /** @var \Symfony\Component\Validator\ValidatorBuilderInterface  */
     protected $validatorBuilder;
 
-    protected function create($appKey = null, $appKeySecret = null, $refreshToken = null, Reader $annotationReader = null)
+    protected function create(Reader $annotationReader = null, $config = null, $authConfig = null)
     {
-        if (is_string($appKey) && file_exists($path = realpath($appKey)) && ($this->config = Yaml::parse(file_get_contents($path)))) {
+        $config = $config ? : dirname(__FILE__) . "/../../../conf/config.yml";
+        if (file_exists($path = realpath($config)) && ($this->config = Yaml::parse(file_get_contents($path)))) {
             $this->configFile = $path;
             $this->appKey = $this->config['system']['appKey'];
             $this->appKeySecret = $this->config['system']['appKeySecret'];
-            $this->temporary_auth_code = $this->config['system']['tempAuthCode'];
             if ($this->config['dynamic']['appRefreshToken'] && $this->config['dynamic']['appRefreshTokenTimeout'] > time()) {
                 $this->setRefreshToken($this->config['dynamic']['appRefreshToken']);
             }
             if ($this->config['dynamic']['appAccessToken'] && $this->config['dynamic']['appAccessTokenTimeout'] > time()) {
                 $this->setAccessToken($this->config['dynamic']['appAccessToken']);
             }
-            $annotationReader = $appKeySecret;
         } else {
-            $this->appKey = $appKey;
-            $this->appKeySecret = $appKeySecret;
-            $this->refresh_token = $refreshToken;
+            throw new \RuntimeException("No config file");
         }
 
         $this->annotationReader = $annotationReader ? new AnnotationReader() : $annotationReader;
         $this->validatorBuilder = Validation::createValidatorBuilder()->enableAnnotationMapping($this->annotationReader);
 
         if (!empty($this->config) && null === $this->getRefreshToken() && null === $this->getAccessToken() && !$this->config['dynamic']['appAccessTokenTimeout'] && !$this->config['dynamic']['appRefreshTokenTimeout']) {
+            $authConfig = Yaml::parse(file_get_contents($authConfig ? : dirname(__FILE__) . "/../../../conf/auth.yml"));
             /** @var \GuzzleHttp\Psr7\Response $result */
             $result = $this->GetToken([
                 'client_id' => $this->getAppKey(),
                 'client_secret' => $this->getAppKeySecret(),
-                'code' => $this->temporary_auth_code
+                'code' => $authConfig['init']['tempAuthCode']
             ])->execute();
 
             $this->setRefreshToken($result->refresh_token);
