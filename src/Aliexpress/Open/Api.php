@@ -28,12 +28,13 @@ use Symfony\Component\Yaml\Yaml;
  * Class Api
  * @package Aliexpress\Open
  *
- * @method RecommendCategoryByKeyword RecommendCategoryByKeyword(mixed $options)
- * @method GetChildrenPostCategoryById GetChildrenPostCategoryById(mixed $options)
- * @method GetChildAttributesResultByPostCateIdAndPath GetChildAttributesResultByPostCateIdAndPath(mixed $options)
- * @method PostAeProduct PostAeProduct(mixed $options)
- * @method UploadImage UploadImage(mixed $options)
- * @method UploadTempImage UploadTempImage(mixed $options)
+ * @method RecommendCategoryByKeyword RecommendCategoryByKeyword(mixed $options = null)
+ * @method GetChildrenPostCategoryById GetChildrenPostCategoryById(mixed $options = null)
+ * @method GetChildAttributesResultByPostCateIdAndPath GetChildAttributesResultByPostCateIdAndPath(mixed $options = null)
+ * @method PostAeProduct PostAeProduct(mixed $options = null)
+ * @method UploadImage UploadImage(mixed $options = null)
+ * @method UploadTempImage UploadTempImage(mixed $options = null)
+ * @method GetPostCategoryById GetPostCategoryById(mixed $options = null)
  */
 class Api
 {
