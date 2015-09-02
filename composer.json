@@ -22,7 +22,7 @@
   "require": {
     "symfony/validator": "~2.6",
     "doctrine/annotations": "~1.2",
-    "guzzlehttp/guzzle": "~6.0",
+    "guzzlehttp/guzzle": ">5.0",
     "doctrine/cache": "~1.4",
     "symfony/yaml": "~2.7",
     "doctrine/collections": "~1.3",
