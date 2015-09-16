@@ -152,4 +152,8 @@ class PostAeProduct extends Method
      * @var string
      */
     private $reduceStrategy;
+    /**
+     * @var  string
+     */
+    private $currencyCode;
 }
