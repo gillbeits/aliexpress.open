@@ -134,6 +134,10 @@ class aeProduct
      * @var string
      */
     protected $reduceStrategy;
+    /**
+     * @var  string
+     */
+    private $currencyCode;
 
     /**
      * @return string
@@ -676,6 +680,24 @@ class aeProduct
     public function setReduceStrategy($reduceStrategy)
     {
         $this->reduceStrategy = $reduceStrategy;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currencyCode;
+    }
+
+    /**
+     * @param string $currencyCode
+     * @return self
+     */
+    public function setCurrencyCode($currencyCode)
+    {
+        $this->currencyCode = $currencyCode;
         return $this;
     }
 }

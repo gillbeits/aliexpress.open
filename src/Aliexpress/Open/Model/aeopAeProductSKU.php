@@ -159,7 +159,7 @@ final class aeopAeProductSKU
     }
 
     /**
-     * @param string $skuPrice
+     * @param string $currencyCode
      * @return self
      */
     public function setCurrencyCode($currencyCode)
