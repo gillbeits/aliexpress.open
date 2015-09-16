@@ -28,6 +28,8 @@ final class aeopAeProductSKU
     private $skuStock;
     /** @var  int */
     private $ipmSkuStock;
+    /** @var  string */
+    private $currencyCode;
 
     /**
      * @return string
@@ -145,6 +147,24 @@ final class aeopAeProductSKU
     public function setIpmSkuStock($ipmSkuStock)
     {
         $this->ipmSkuStock = $ipmSkuStock;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrencyCode()
+    {
+        return $this->currencyCode;
+    }
+
+    /**
+     * @param string $skuPrice
+     * @return self
+     */
+    public function setCurrencyCode($currencyCode)
+    {
+        $this->currencyCode = $currencyCode;
         return $this;
     }
 }
