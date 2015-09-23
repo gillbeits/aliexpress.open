@@ -83,7 +83,7 @@ class Method
      */
     public function execute()
     {
-        $result = null;
+        $response = null;
         $properties = $this->getProperties();
         $client = $this->getClient();
         switch ($this->method) {
@@ -108,6 +108,6 @@ class Method
             default:
                 throw new \RuntimeException("Required methods " . Api::METHOD_GET . " and " . Api::METHOD_POST);
         }
-        return (is_null($result)) ? null : (object)json_decode($response->getBody()->getContents(), true);
+        return (is_null($response)) ? $response : (object)json_decode($response->getBody()->getContents(), true);
     }
 }
