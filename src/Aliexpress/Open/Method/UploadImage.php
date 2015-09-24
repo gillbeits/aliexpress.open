@@ -11,38 +11,45 @@ namespace Aliexpress\Open\Method;
 
 use Aliexpress\Open\Api;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\Url;
 
-class UploadImage extends Method
-{
+class UploadImage extends Method {
     protected $method = Api::METHOD_POST;
     protected $methodPath = "/1/aliexpress.open/api.uploadImage";
 
-    /** @var  string */
+    /**
+     * @var string
+     */
     private $fileName;
-    /** @var  int */
+
+    /**
+     * @var int
+     */
     private $groupId;
+
     /**
      * @var resource
      * @NotBlank
-     * @Url
      */
     protected $file;
 
     /**
      * @return mixed|\Psr\Http\Message\ResponseInterface
      */
-    public function execute()
-    {
+    public function execute() {
         $this->fileName = basename($this->file);
         $properties = $this->getProperties();
         $client = $this->getClient();
 
-        $response = $client->post($this->sign->getFullPath(), [
-            'query' => $properties,
-            'body' => fopen($this->file, 'r')
-        ]);
+        $response = null;
+        try {
+            $response = $client->post($this->sign->getFullPath(), [
+                'query' => $properties,
+                'body' => fopen($this->file, 'r')
+            ]);
+        } catch (ClientException $e) {
+            var_dump($e->getResponse()->getBody()->getContents());
+        }
 
-        return (object)json_decode($response->getBody()->getContents(), true);
+        return (is_null($response)) ? $response : (object)json_decode($response->getBody()->getContents(), true);
     }
 }

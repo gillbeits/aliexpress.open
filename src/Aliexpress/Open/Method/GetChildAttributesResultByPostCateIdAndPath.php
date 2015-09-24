@@ -22,6 +22,7 @@ class GetChildAttributesResultByPostCateIdAndPath extends Method
      * @NotBlank
      */
     private $cateId;
+
     /**
      * @var array|null
      */
