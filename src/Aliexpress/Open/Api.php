@@ -13,6 +13,7 @@ use Aliexpress\Open\Creational\Singleton;
 use Aliexpress\Open\Exception\NoMethodExists;
 use Aliexpress\Open\Method\GetChildAttributesResultByPostCateIdAndPath;
 use Aliexpress\Open\Method\GetChildrenPostCategoryById;
+use Aliexpress\Open\Method\Method;
 use Aliexpress\Open\Method\PostAeProduct;
 use Aliexpress\Open\Method\RecommendCategoryByKeyword;
 use Aliexpress\Open\Method\UploadImage;
@@ -253,11 +254,13 @@ class Api
             throw new NoMethodExists($class);
         }
         $reflect  = new \ReflectionClass($class);
+        /** @var Method $instance */
         $instance = $reflect->newInstanceArgs($args);
         if (($constraints = $this->validatorBuilder->getValidator()->validate($instance)) && $constraints->count()) {
             $error = $constraints->get(0);
             throw new ValidatorException($error->getPropertyPath() . ": " . $error->getMessage());
         }
+        $instance->setApiClass($this);
         return $instance;
     }
 }

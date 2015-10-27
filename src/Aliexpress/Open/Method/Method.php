@@ -42,6 +42,8 @@ class Method
     protected $api = Api::API;
     /** @var  Client */
     protected static $client;
+    /** @var  Api */
+    protected $ApiClass;
 
     /** @var  Sign */
     protected $sign;
@@ -73,12 +75,28 @@ class Method
     }
 
     /**
+     * @return Api
+     */
+    public function getApiClass()
+    {
+        return $this->ApiClass;
+    }
+
+    /**
+     * @param Api $ApiClass
+     */
+    public function setApiClass($ApiClass)
+    {
+        $this->ApiClass = $ApiClass;
+    }
+
+    /**
      * @return Client
      */
     protected function getClient()
     {
         if (null === self::$client) {
-            self::$client = new Client();
+            self::$client = new Client($this->getApiClass()->getConfigParams('guzzlehttp.options'));
         }
         return self::$client;
     }
