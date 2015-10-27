@@ -40,6 +40,8 @@ class Method
      * @Assert\NotBlank
      */
     protected $api = Api::API;
+    /** @var  Client */
+    protected $client;
 
     /** @var  Sign */
     protected $sign;
@@ -75,7 +77,10 @@ class Method
      */
     protected function getClient()
     {
-        return new Client();
+        if (null === $this->client) {
+            $this->client = new Client();
+        }
+        return $this->client;
     }
 
     /**
