@@ -41,7 +41,7 @@ class Method
      */
     protected $api = Api::API;
     /** @var  Client */
-    protected $client;
+    protected static $client;
 
     /** @var  Sign */
     protected $sign;
@@ -77,10 +77,10 @@ class Method
      */
     protected function getClient()
     {
-        if (null === $this->client) {
-            $this->client = new Client();
+        if (null === self::$client) {
+            self::$client = new Client();
         }
-        return $this->client;
+        return self::$client;
     }
 
     /**
