@@ -29,6 +29,9 @@ class ReceiptAddress {
     protected $address2;
 
     /** @var  string */
+    protected $address;
+
+    /** @var  string */
     protected $phoneArea;
 
     /** @var  string */
@@ -51,6 +54,60 @@ class ReceiptAddress {
 
     /** @var  string */
     protected $faxArea;
+
+    /** @var  string */
+    protected $faxCountry;
+
+    /** @var  string */
+    protected $faxNumber;
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFaxCountry()
+    {
+        return $this->faxCountry;
+    }
+
+    /**
+     * @param string $faxCountry
+     */
+    public function setFaxCountry($faxCountry)
+    {
+        $this->faxCountry = $faxCountry;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFaxNumber()
+    {
+        return $this->faxNumber;
+    }
+
+    /**
+     * @param string $faxNumber
+     */
+    public function setFaxNumber($faxNumber)
+    {
+        $this->faxNumber = $faxNumber;
+    }
 
     /**
      * @return string
