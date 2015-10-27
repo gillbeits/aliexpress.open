@@ -132,6 +132,8 @@ class aeopAeOrder {
     /** @var  string */
     protected $fundStatus;
 
+    /** @var  RefundInfo */
+    protected $refundInfo;
     /**
      * @return ReceiptAddress
      */

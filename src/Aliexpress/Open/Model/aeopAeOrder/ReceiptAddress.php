@@ -49,6 +49,25 @@ class ReceiptAddress {
     /** @var  string */
     protected $detailAddress;
 
+    /** @var  string */
+    protected $faxArea;
+
+    /**
+     * @return string
+     */
+    public function getFaxArea()
+    {
+        return $this->faxArea;
+    }
+
+    /**
+     * @param string $faxArea
+     */
+    public function setFaxArea($faxArea)
+    {
+        $this->faxArea = $faxArea;
+    }
+
     /**
      * @return string
      */

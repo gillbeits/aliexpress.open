@@ -1,6 +1,6 @@
 guzzlehttp:
     options:
-        timeout: 5
+        timeout: 2
 system:
     appKey: "xxxxx"
     appKeySecret: "xxxxxx"
