@@ -134,6 +134,61 @@ class aeopAeOrder {
 
     /** @var  RefundInfo */
     protected $refundInfo;
+
+    /** @var  ModelAmount */
+    protected $escrowFee;
+
+    /** @var  string */
+    protected $sellerOperatorAliidloginid;
+
+    /**
+     * @return string
+     */
+    public function getSellerOperatorAliidloginid()
+    {
+        return $this->sellerOperatorAliidloginid;
+    }
+
+    /**
+     * @param string $sellerOperatorAliidloginid
+     */
+    public function setSellerOperatorAliidloginid($sellerOperatorAliidloginid)
+    {
+        $this->sellerOperatorAliidloginid = $sellerOperatorAliidloginid;
+    }
+
+    /**
+     * @return RefundInfo
+     */
+    public function getRefundInfo()
+    {
+        return $this->refundInfo;
+    }
+
+    /**
+     * @param RefundInfo $refundInfo
+     */
+    public function setRefundInfo($refundInfo)
+    {
+        $this->refundInfo = $refundInfo;
+    }
+
+    /**
+     * @return ModelAmount
+     */
+    public function getEscrowFee()
+    {
+        return $this->escrowFee;
+    }
+
+    /**
+     * @param ModelAmount $escrowFee
+     */
+    public function setEscrowFee($escrowFee)
+    {
+        $this->escrowFee = $escrowFee;
+    }
+
     /**
      * @return ReceiptAddress
      */
