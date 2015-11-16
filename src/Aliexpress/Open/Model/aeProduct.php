@@ -18,6 +18,10 @@ class aeProduct
     /**
      * @var string
      */
+    protected $productId;
+    /**
+     * @var string
+     */
     protected $detail;
     /**
      * @var aeopAeProductSKUList|aeopAeProductSKU[]
@@ -138,6 +142,22 @@ class aeProduct
      * @var  string
      */
     private $currencyCode;
+
+    /**
+     * @return string
+     */
+    public function getProductId()
+    {
+        return $this->productId;
+    }
+
+    /**
+     * @param string $productId
+     */
+    public function setProductId($productId)
+    {
+        $this->productId = $productId;
+    }
 
     /**
      * @return string
