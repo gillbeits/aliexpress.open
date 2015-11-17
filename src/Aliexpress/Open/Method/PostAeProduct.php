@@ -22,6 +22,10 @@ class PostAeProduct extends Method
     protected $methodPath = '/1/aliexpress.open/api.postAeProduct';
 
     /**
+     * @var int
+     */
+    private $productId;
+    /**
      * @var string
      * @NotBlank()
      */
