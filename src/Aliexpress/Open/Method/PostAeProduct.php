@@ -160,4 +160,12 @@ class PostAeProduct extends Method
      * @var  string
      */
     private $currencyCode;
+    /**
+     * @var string
+     */
+    private $couponStartDate;
+    /**
+     * @var string
+     */
+    private $couponEndDate;
 }

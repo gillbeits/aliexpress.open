@@ -141,7 +141,47 @@ class aeProduct
     /**
      * @var  string
      */
-    private $currencyCode;
+    protected $currencyCode;
+    /**
+     * @var string
+     */
+    protected $couponStartDate;
+    /**
+     * @var string
+     */
+    protected $couponEndDate;
+
+    /**
+     * @return string
+     */
+    public function getCouponStartDate() {
+        return $this->couponStartDate;
+    }
+
+    /**
+     * @param string $couponStartDate
+     * @return self
+     */
+    public function setCouponStartDate($couponStartDate) {
+        $this->couponStartDate = $couponStartDate;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCouponEndDate() {
+        return $this->couponEndDate;
+    }
+
+    /**
+     * @param string $couponEndDate
+     * @return self
+     */
+    public function setCouponEndDate($couponEndDate) {
+        $this->couponEndDate = $couponEndDate;
+        return $this;
+    }
 
     /**
      * @return string
@@ -153,10 +193,12 @@ class aeProduct
 
     /**
      * @param string $productId
+     * @return self
      */
     public function setProductId($productId)
     {
         $this->productId = $productId;
+        return $this;
     }
 
     /**

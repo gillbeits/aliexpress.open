@@ -187,4 +187,14 @@ class EditAeProduct extends Method {
      */
     private $currencyCode;
 
+    /**
+     * @var string
+     */
+    private $couponStartDate;
+
+    /**
+     * @var string
+     */
+    private $couponEndDate;
+
 }
