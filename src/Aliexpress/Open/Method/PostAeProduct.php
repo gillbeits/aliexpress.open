@@ -36,7 +36,6 @@ class PostAeProduct extends Method
     private $aeopAeProductSKUs;
     /**
      * @var int
-     * @NotBlank()
      */
     private $deliveryTime;
     /**
@@ -84,7 +83,6 @@ class PostAeProduct extends Method
     private $imageURLs;
     /**
      * @var int
-     * @NotBlank()
      */
     private $productUnit;
     /**
@@ -98,22 +96,18 @@ class PostAeProduct extends Method
     /**
      * Длина в сантиметрах
      * @var int
-     * @NotBlank()
      */
     private $packageLength;
     /**
      * @var int
-     * @NotBlank()
      */
     private $packageWidth;
     /**
      * @var int
-     * @NotBlank()
      */
     private $packageHeight;
     /**
      * @var string
-     * @NotBlank()
      */
     private $grossWeight;
     /**

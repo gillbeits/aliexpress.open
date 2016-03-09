@@ -35,7 +35,6 @@ class EditAeProduct extends Method {
 
     /**
      * @var int
-     * @NotBlank()
      */
     private $deliveryTime;
 
@@ -93,7 +92,6 @@ class EditAeProduct extends Method {
 
     /**
      * @var int
-     * @NotBlank()
      */
     private $productUnit;
 
@@ -110,25 +108,21 @@ class EditAeProduct extends Method {
     /**
      * Длина в сантиметрах
      * @var int
-     * @NotBlank()
      */
     private $packageLength;
 
     /**
      * @var int
-     * @NotBlank()
      */
     private $packageWidth;
 
     /**
      * @var int
-     * @NotBlank()
      */
     private $packageHeight;
 
     /**
      * @var string
-     * @NotBlank()
      */
     private $grossWeight;
 
